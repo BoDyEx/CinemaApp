@@ -7,7 +7,7 @@ export default function homepage({ navigation }) {
         <ImageBackground source={cinema} resizeMode="cover" style={styles.imeg}>
         <View style={styles.Button}>
           <Button title="Log in" color="#0000FF" onPress={() => {
-            navigation.navigate("Log In");
+            navigation.navigate("Login");
           }}></Button>
         </View>
         <View style={styles.Button1}>
