@@ -47,7 +47,7 @@ export default function Login  ({navigation}){
               .catch((e) => setError(e.message));
           } 
         
-        }color="#FB081F"
+        }color="#8bc34a"
         />
                     <Button title="register" style={styles.button} onPress={openRegisterScreen} />
 
