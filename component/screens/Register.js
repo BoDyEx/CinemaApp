@@ -55,9 +55,6 @@ export default function Register  ({navigation}){
 </View>
   );
 };
- 
- 
- 
  const styles = StyleSheet.create({          
    container2:{
      backgroundColor:"#223654",
@@ -71,7 +68,6 @@ export default function Register  ({navigation}){
      fontFamily: "Cochin",
      fontSize: 20,
     fontWeight: "bold"
-
    },
 container1: {
   height: 50,
