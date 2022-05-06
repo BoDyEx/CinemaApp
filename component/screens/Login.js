@@ -87,8 +87,6 @@ container1: {
   backgroundColor:"#ffffff",
   borderColor:'#53E8C6'
 },
-
-
 Button:{
   width: 90,
   marginTop:58,
