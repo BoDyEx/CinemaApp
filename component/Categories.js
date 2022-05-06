@@ -1,5 +1,4 @@
 import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from "react-native";
-import cinema from "../assets/cinema.jpeg";
 
 export default function Categories({ navigation }) {
     return (
@@ -54,7 +53,4 @@ export default function Categories({ navigation }) {
         fontSize: 25,
         fontWeight: "bold"
       },
-      
-      
-    
   });
