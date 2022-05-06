@@ -96,9 +96,6 @@ Button:{
   borderRadius: 20,
   overflow: "hidden",
 },
-
-
-   
  });
         
 
