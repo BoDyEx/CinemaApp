@@ -1,77 +1,101 @@
-import { StyleSheet, Text, View, TextInput, Button,ImageBackground } from "react-native";
-import { React, useState } from "react";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { register } from "../../db/auth/auth";
+import { useState } from "react";
 
-const Register = () => {
+export default function Register  ({navigation}){
+  
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [error, setError] = useState("");
 
-
+ 
   return (
   
-   <View style={styles.container2}>
-   <Text style={styles.container3}><h2>Create New Account</h2></Text>
-   <label style={{fontSize:20}} >Email</label>
-   <View style={styles.container1}>
-        <TextInput
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          
-        />
+    <View style={styles.container2}>
+      <View >
+    <Text style={styles.container3}><h2>Create New Account</h2></Text>
+    <label style={{fontSize:20,fontWeight: "bold",marginTop:30}} >Email</label>
+    <View style={styles.container1}>
+         <TextInput
+           onChangeText={setEmail}
+           keyboardType="email-address"
+           placeholder="Enter Email"
+
+         />
+       </View>
+           <label style={{fontSize:20,fontWeight: "bold",marginTop:0}} >Password</label>
+      <View style={styles.container1}>
+      <TextInput
+           onChangeText={setpassword}
+           keyboardType="visible-password"
+           secureTextEntry={true}
+           placeholder="Enter password"
+         />
       </View>
-      <View
-        style={styles.Body}
-      >
-          <label style={{fontSize:20,marginTop:2}} >Password</label>
-        <TextInput
-          onChangeText={setpassword}
-          keyboardType="visible-password"
-          secureTextEntry={true}
-          style={styles.container1}
-        />
-      </View>
-      <View>
-        <Button
-          title="Register" onPress={() => {
+      
+       <View  style={styles.Button}>
+       <Button
+          title="Register" 
+          onPress={() => {
             console.log(email, password);
-            register(email,password)
-            .then(
-              ()=> {
-                navigation.navigate('fhome')} 
+            register(email,password)   
+              .then(
+              ()=> { navigation.navigate('Login')} 
               )
-              .catch((error) => setError(error.message));
-          }}
+              .catch((e) => setError(e.message));
+          } 
+        
+        } color="#53E8C6"
         />
-
         <Text>{error}</Text>
-      </View>
-    </View>
 
+       
+      </View>
+      </View>
+</View>
   );
 };
+ 
+ 
+ 
+ const styles = StyleSheet.create({          
+   container2:{
+     backgroundColor:"#223654",
+     marginTop:0,
+   },
+   container3:{
+     marginLeft:50,
+     marginTop:112,
+     width: 300,
+     position:"center",
+     fontFamily: "Cochin",
+     fontSize: 20,
+    fontWeight: "bold"
 
-export default Register;
+   },
+container1: {
+  height: 50,
+  marginTop:17,
+  borderWidth: 5,
+  borderRadius: 15,
+  marginBottom: 40,
+  fontSize: 20,
+  padding: 10,
+  backgroundColor:"#ffffff",
+  borderColor:'#53E8C6'
+},
 
-const styles = StyleSheet.create({
-    container1: {
-      marginTop: 5,
-      flex:1 , borderColor: "black", borderWidth: 2,
-      height: 100,
-      borderRadius:2,
-      borderRadius: 20,
-     overflow: "hidden"
-      }  ,          
-  container2:{
-    backgroundColor:"#8bc34a",
-    marginTop:150,
-    borderRadius: 20,
-    overflow: "hidden"
-  },
-  container3:{
-    marginLeft:80,
-    width: 300,
-    position:"center",
-  }
-  
-});
+
+Button:{
+  width: 90,
+  marginTop:85,
+  marginLeft:150,
+  borderRadius: 20,
+  overflow: "hidden",
+},
+
+
+   
+ });
+        
+
