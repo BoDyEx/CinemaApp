@@ -31,9 +31,8 @@ export default function Register  ({navigation}){
            secureTextEntry={true}
            placeholder="Enter password"
          />
-      </View>
-      
-       <View  style={styles.Button}>
+      </View>  
+      <View  style={styles.Button}>
        <Button
           title="Register" 
           onPress={() => {
@@ -43,13 +42,10 @@ export default function Register  ({navigation}){
               ()=> { navigation.navigate('Login')} 
               )
               .catch((e) => setError(e.message));
-          } 
-        
+          }  
         } color="#53E8C6"
         />
         <Text>{error}</Text>
-
-       
       </View>
       </View>
 </View>
