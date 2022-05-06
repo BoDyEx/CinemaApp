@@ -1,13 +1,11 @@
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { login } from "../../db/auth/auth";
 import { useState } from "react";
-
 export default function Login  ({navigation}){
   
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [error, setError] = useState("");
-
   const openRegisterScreen = () => {
     navigation.navigate('Register');
   }; 
@@ -59,9 +57,6 @@ export default function Login  ({navigation}){
 </View>
   );
 };
- 
- 
- 
  const styles = StyleSheet.create({          
    container2:{
      backgroundColor:"#223654",
@@ -74,7 +69,6 @@ export default function Login  ({navigation}){
      fontFamily: "Cochin",
      fontSize: 18,
     fontWeight: "bold"
-
    },
 container1: {
   height: 50,
