@@ -1,16 +1,11 @@
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { register } from "../../db/auth/auth";
 import { useState } from "react";
-
 export default function Register  ({navigation}){
-  
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [error, setError] = useState("");
-
- 
-  return (
-  
+  return ( 
     <View style={styles.container2}>
       <View >
     <Text style={styles.container3}><h2>Create New Account</h2></Text>
@@ -20,7 +15,6 @@ export default function Register  ({navigation}){
            onChangeText={setEmail}
            keyboardType="email-address"
            placeholder="Enter Email"
-
          />
        </View>
            <label style={{fontSize:20,fontWeight: "bold",marginTop:0}} >Password</label>
