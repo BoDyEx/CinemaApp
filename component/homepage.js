@@ -1,5 +1,5 @@
 import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from "react-native";
-import cinema from "../assets/project.jpg";
+import cinema from "../assets/images.jpg";
 
 export default function homepage({ navigation }) {
     return (
@@ -10,11 +10,9 @@ export default function homepage({ navigation }) {
             </Text>
           </View>
           <View>
-          <Image
-           source={{ uri: 'cinema' }}
-           style={{ width: 40, height: 40 }}
-          />
-          </View>
+          <ImageBackground source={cinema} resizeMode="cover" style={styles.imeg}>         
+          </ImageBackground>       
+            </View>
         <View style={styles.Button}>
           <Button title="Log in" color="#53E8C6" onPress={() => {
             navigation.navigate("Login");
@@ -35,7 +33,7 @@ export default function homepage({ navigation }) {
     },
     
     Button:{
-      marginTop:500,
+      marginTop:100,
       width:100,
       borderRadius: 20,
       overflow: "hidden",
@@ -56,5 +54,11 @@ text:{
   fontFamily: "Cochin",
   fontSize: 25,
   fontWeight: "bold"
+},
+imeg: {
+  flex: 1,
+  padding: 150,
+  alignItems: "center",
+  marginTop:50,
 },
   });
