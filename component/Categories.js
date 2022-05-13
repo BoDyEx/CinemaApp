@@ -3,54 +3,73 @@ import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from
 export default function Categories({ navigation }) {
     return (
        <View style={styles.container}>
-           <View>
-               <Text style={styles.text}>
-               Welcome to the movies section
-               </Text>
-           </View>
-       <View style={styles.Button1}>
-          <Button title="romantic" color="#53E8C6" onPress={() => {
-            navigation.navigate("Register");
-          }}></Button>
-        </View>
-        <View style={styles.Button1}>
-          <Button title="comdey" color="#53E8C6" onPress={() => {
-            navigation.navigate("Register");
-          }}></Button>
-        </View>
-        <View style={styles.Button1}>
-          <Button title="action" color="#53E8C6" onPress={() => {
-            navigation.navigate("Register");
-          }}></Button>
-        </View>
-        <View style={styles.Button1}>
-          <Button title="action2" color="#53E8C6" onPress={() => {
-            navigation.navigate("Register");
-          }}></Button>
-        </View>        
+               <Text style={styles.txt}>اختر نوع الفليم</Text>
+
+       <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("ActionMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >اكشن</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("ComdyMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >كوميدى</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("RomanticMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >رومانسى</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("CartoonMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >كرتون</Text>
+      </TouchableOpacity>
+      
        </View>
     );
   }
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor:'#223654',
+      flex:1,
+      backgroundColor:"#223654",
+      padding:15,
     },
-    Button1:{
-        width:300,
-        marginTop:50,
-        marginLeft:40,
-        borderRadius: 20,
-        overflow: "hidden",
-    
-      },
-      text:{
+          
+      txt:{
+        color:"#EECD45",
         fontSize:20,
-        marginTop:60,
-        marginLeft:35,
-        position:"center",
-        fontFamily: "Cochin",
-        fontSize: 25,
-        fontWeight: "bold"
+        alignSelf: "center",
+        marginTop:"25%",
+      },
+      txtbtn:{
+        color:"#223654",
+        fontSize:20,
+        alignSelf: "center",
+        fontWeight:"bold", 
+      },
+      button:{
+        width:"80%",
+        padding:10,
+        borderRadius:30,
+        marginTop:20,
+        alignSelf:"center",
+        backgroundColor:"#53E8C6"
+        
       },
   });

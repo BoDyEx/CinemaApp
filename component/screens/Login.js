@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button,TouchableOpacity } from "react-native";
 import { login } from "../../db/auth/auth";
 import { useState } from "react";
+import AddMovie from "./AddMovies";
 export default function Login  ({navigation}){
   
   const [email, setEmail] = useState("");
@@ -13,29 +14,29 @@ export default function Login  ({navigation}){
   
     <View style={styles.container2}>
       <View >
-    <Text style={styles.container3}><h2>Welcome to your Account</h2></Text>
-    <label style={{fontSize:20,fontWeight: "bold",marginTop:30}} >Email</label>
-    <View style={styles.container1}>
+    <Text style={styles.label} >الايميل</Text>
+
          <TextInput
+           style={styles.TextInput}
            onChangeText={setEmail}
            keyboardType="email-address"
-           placeholder="Enter Email"
+           placeholder=" ادخل ايميلك هنا"
+           textAlign="right"
 
          />
-       </View>
-           <label style={{fontSize:20,fontWeight: "bold",marginTop:0}} >Password</label>
-      <View style={styles.container1}>
+
+       <Text style={styles.label} >كلمة السر</Text>
+
       <TextInput
+          style={styles.TextInput}
            onChangeText={setpassword}
            keyboardType="visible-password"
            secureTextEntry={true}
-           placeholder="Enter password"
+           placeholder="ادخل كلمة السر هنا "
          />
-      </View>
-      
-       <View  style={styles.Button}>
-       <Button
-          title="Login" 
+
+<TouchableOpacity 
+          style={styles.button}
           onPress={() => {
             console.log(email, password);
             login(email,password)   
@@ -45,22 +46,25 @@ export default function Login  ({navigation}){
               .catch((e) => setError(e.message));
           } 
         
-        } color="#53E8C6"
-        />
+        }     
+                >
+              <Text style={styles.txtbtn} >دخول</Text>
+          </TouchableOpacity>
+      
+      
         <Text>{error}</Text>
 
-        <View >
-        <Button title="register" onPress={openRegisterScreen} />
-        </View>
-      </View>
       </View>
 </View>
   );
 };
  const styles = StyleSheet.create({          
    container2:{
+     flex:1,
      backgroundColor:"#223654",
-   },
+     padding:15,
+      justifyContent:"center",   
+    },
    container3:{
      marginLeft:50,
      marginTop:112,
@@ -81,12 +85,38 @@ container1: {
   backgroundColor:"#ffffff",
   borderColor:'#53E8C6'
 },
-Button:{
-  width: 90,
-  marginTop:58,
-  marginLeft:150,
-  borderRadius: 20,
-  overflow: "hidden",
+
+label:{
+  fontSize:15,
+  color:"#EECD45",
+  
+  
+},
+txtbtn:{
+  color:"white",
+  fontSize:15,
+  alignSelf: "center", 
+},
+button:{
+  width:"50%",
+  padding:10,
+  borderRadius:30,
+  marginTop:20,
+  marginHorizontal:"25%",
+  borderColor:"#53E8C6",
+  borderWidth:2, 
+  
+},
+TextInput:{
+  height: 40,
+  margin: 12,
+  borderWidth: 1,
+  padding: 10,
+  borderRadius:15,
+  borderColor:'#53E8C6',
+  textAlign: 'right',
+  color:"white"
+  
 },
  });
         

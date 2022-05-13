@@ -1,28 +1,31 @@
 import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from "react-native";
-import cinema from "../assets/images.jpg";
+import icon from "../assets/images.jpg";
 
 export default function homepage({ navigation }) {
     return (
         <View style={styles.container}>
-          <View>
-            <Text style={styles.text}>
-              Welcome To CinemaApp
-            </Text>
-          </View>
-          <View>
-          <ImageBackground source={cinema} resizeMode="cover" style={styles.imeg}>         
-          </ImageBackground>       
-            </View>
-        <View style={styles.Button}>
-          <Button title="Log in" color="#53E8C6" onPress={() => {
-            navigation.navigate("Login");
-          }}></Button>
-        </View>
-        <View style={styles.Button1}>
-          <Button title="Sign up" color="#53E8C6" onPress={() => {
-            navigation.navigate("Register");
-          }}></Button>
-        </View>
+          
+          <Image source={require('../assets/logo.png')} style={styles.imeg} />
+
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate("Login");
+            }}        
+                >
+              <Text style={styles.txtbtn}>الدخول</Text>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity 
+          style={styles.buttonResgister}
+            onPress={() => {
+              navigation.navigate("Register");
+            }}      
+                >
+              <Text style={styles.txtbtnResgister} >تسجيل حساب جديد</Text>
+          </TouchableOpacity>
+        
       </View>
     );
   }
@@ -33,32 +36,63 @@ export default function homepage({ navigation }) {
     },
     
     Button:{
-      marginTop:100,
+      marginTop:5,
       width:100,
       borderRadius: 20,
-      overflow: "hidden",
-      marginLeft:40
 },
 Button1:{
-  marginTop:-34,
   width:100,
   borderRadius: 20,
-  overflow: "hidden",
-  marginLeft:235
+  marginTop:10,
+  
 },
 text:{
   fontSize:20,
   marginTop:60,
   marginLeft:50,
   position:"center",
-  fontFamily: "Cochin",
   fontSize: 25,
-  fontWeight: "bold"
+  color:"white",
+ textAlign: 'center'
+
+  
+  
 },
 imeg: {
-  flex: 1,
-  padding: 150,
-  alignItems: "center",
-  marginTop:50,
+    width: "60%",
+    height: "35%",
+    marginHorizontal:"20%",
+    marginTop:100,
+
 },
+txtbtn:{
+  color:"white",
+  fontSize:15,
+  alignSelf: "center",
+
+  
+  
+},
+txtbtnResgister:{
+  color:"#EECD45",
+  fontSize:15,
+  alignSelf: "center",
+},
+button:{
+  width:"50%",
+  padding:10,
+  borderRadius:30,
+  marginTop:20,
+  marginHorizontal:"25%",
+  borderColor:"#53E8C6",
+  borderWidth:2, 
+  
+},
+
+buttonResgister:{
+  margin:40,
+  marginHorizontal:"25%",
+},
+
+
   });
