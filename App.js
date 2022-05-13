@@ -35,7 +35,7 @@ export default function App() {
       <Stack.Screen name="Login" component={LoginScreen} options={{title:"الدخول"}}/>
       <Stack.Screen name="Register" component={Register}  options={{title:"التسجيل"}}/>
 
-
+          <Stack.Screen name="AddMovies" component={AddMovies} options={{title:"الفئات"}}/>
       <Stack.Screen name="Home" component={fhome} options={{title:"الفئات"}}/>
       <Stack.Screen  name="ActionMovie" component={ActionMovie} options={{title:"افلام اكشن"}} />
       <Stack.Screen  name="ComdyMovie" component={ComdyMovie} options={{title:"افلام كوميدى"}} />

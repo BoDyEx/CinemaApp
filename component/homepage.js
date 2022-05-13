@@ -47,7 +47,7 @@ Button1:{
   
 },
 text:{
-  fontSize:20,
+
   marginTop:60,
   marginLeft:50,
   position:"center",

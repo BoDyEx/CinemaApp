@@ -1,8 +1,24 @@
 import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from "react-native";
+import {auth} from "../db/Config";
 
 export default function Categories({ navigation }) {
     return (
        <View style={styles.container}>
+           {auth.currentUser.email === "...."?<TouchableOpacity
+               style={styles.button}
+               onPress={() => {
+                   navigation.navigate("AddMovies");
+               }}
+           >
+               <Text style={styles.txtbtn} >اضافه فيلم</Text>
+           </TouchableOpacity> :
+               <TouchableOpacity
+                   style={styles.button}
+               >
+                   <Text style={styles.txtbtn} >لازم تكون ادمن</Text>
+               </TouchableOpacity>
+
+           }
                <Text style={styles.txt}>اختر نوع الفليم</Text>
 
        <TouchableOpacity 
