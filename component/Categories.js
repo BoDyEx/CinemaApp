@@ -1,0 +1,112 @@
+import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from "react-native";
+import { auth } from "../db/Config";
+import {  signOut } from "firebase/auth";
+
+export default function Categories({ navigation }) {
+    return (
+       <View style={styles.container}>
+         {auth.currentUser.email === "ahmed1@gmail.com"?<TouchableOpacity
+               style={styles.newbutton}
+               onPress={() => {
+                   navigation.navigate("AddMovie");
+               }}
+           >
+               <Text style={styles.txtbtn} >اضافه فيلم</Text>
+           </TouchableOpacity> :
+               <View>
+               </View>
+
+           }
+               <Text style={styles.txt}>اختر نوع الفليم</Text>
+
+       <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("ActionMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >اكشن</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("ComdyMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >كوميدى</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("RomanticMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >رومانسى</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("CartoonMovie");
+          }}
+          >
+          <Text style={styles.txtbtn} >كرتون</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+          style={styles.newbutton}
+          onPress={() => {
+
+            signOut(auth).then(()=>{
+
+
+              console.log("signed out");
+              navigation.navigate("Cinema");
+          })          }}
+          >
+          <Text style={styles.txtbtn} >تسجيل الخروج</Text>
+      </TouchableOpacity>
+      
+       </View>
+    );
+  }
+  const styles = StyleSheet.create({
+    container: {
+      flex:1,
+      backgroundColor:"#223654",
+      padding:15,
+    },
+          
+      txt:{
+        color:"#EECD45",
+        fontSize:20,
+        alignSelf: "center",
+        marginTop:"25%",
+      },
+      txtbtn:{
+        color:"#223654",
+        fontSize:20,
+        alignSelf: "center",
+        fontWeight:"bold", 
+      },
+      button:{
+        width:"80%",
+        padding:10,
+        borderRadius:30,
+        marginTop:20,
+        alignSelf:"center",
+        backgroundColor:"#53E8C6"
+        
+      },
+      newbutton:{
+        width:"80%",
+        padding:10,
+        borderRadius:30,
+        marginTop:20,
+        alignSelf:"center",
+        backgroundColor:"#EECD45"
+        
+      },
+  });
