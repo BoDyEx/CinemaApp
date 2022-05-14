@@ -34,7 +34,7 @@ const AddMovie=({ navigation, route })=> {
           
     
           )
-          alert("film added")
+          alert("movie added")
 
         };
 
