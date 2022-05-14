@@ -15,6 +15,7 @@ import CartoonMovie from "./component/screens/CartoonMovie";
 import RomanticMovie from "./component/screens/RomanticMovie";
 
 
+
 export default function App() {
   const Stack = createNativeStackNavigator();
 
