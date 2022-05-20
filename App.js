@@ -23,20 +23,20 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator 
       screenOptions={
-        {headerStyle:{ backgroundColor:'#53E8C6', },         
+        {headerStyle:{ backgroundColor:'#53E8C6',  },         
         headerTitleAlign: 'center',
-        headerTintColor:"#223654"
+        headerTintColor:"#223654",
         
       }}  
         initialRouteName="homepage"
         >
 
-      <Stack.Screen  name="Cinema" component={homepage}  options={{title:"مشاهدة الافلام"}}/>
+      <Stack.Screen  name="Cinema" component={homepage}  options={{title:"مشاهدة الافلام",  headerShown: false}}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{title:"الدخول"}}/>
       <Stack.Screen name="Register" component={Register}  options={{title:"التسجيل"}}/>
 
 
-      <Stack.Screen name="Home" component={fhome} options={{title:"الفئات",       headerShown: false }}/>
+      <Stack.Screen name="Home" component={fhome} options={{title:"الفئات" ,  headerShown: false}}/>
       <Stack.Screen  name="ActionMovie" component={ActionMovie} options={{title:"افلام اكشن"}} />
       <Stack.Screen  name="AddMovie" component={AddMovie} options={{title:"افلام اكشن"}} />
 

@@ -1,15 +1,12 @@
 import React,{useState,useEffect} from 'react';
-import { Text , View, Button,TextInput,StyleSheet,FlatList,Image} from 'react-native';
+import { Text , View, StyleSheet,Image} from 'react-native';
 
 const FilmItem=(props)=>{
   
-
- 
-      
-
   return(
     
-     <View>
+     <View >
+       
         <Image
           style={styles.photo}
           source={{uri:props.link}}
@@ -24,9 +21,9 @@ const styles=StyleSheet.create({
         width: 250,
         height:400,  
         marginHorizontal:"18%",
-        borderRadius:20,
-        borderWidth:5,
+        borderWidth:2,
         borderColor:"#53E8C6",
+        borderRadius:5,
 
       }, 
     
@@ -37,6 +34,12 @@ const styles=StyleSheet.create({
           fontWeight:"bold",
           margin:10,
           
+      },
+       shadowProp: {
+        shadowColor: '#030E19',
+        shadowOffset: {width: 2, height: -10},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
       },
 
  

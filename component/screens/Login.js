@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Button,TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput,TouchableOpacity } from "react-native";
 import { login } from "../../db/auth/auth";
 import { useState } from "react";
 import AddMovie from "./AddMovies";
@@ -69,7 +69,6 @@ export default function Login  ({navigation}){
      marginLeft:50,
      marginTop:112,
      width: 300,
-     position:"center",
      fontFamily: "Cochin",
      fontSize: 18,
     fontWeight: "bold"

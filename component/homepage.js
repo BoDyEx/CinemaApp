@@ -1,8 +1,9 @@
 import {Image,StyleSheet,Text,View,Button,TouchableOpacity,ImageBackground} from "react-native";
-import icon from "../assets/images.jpg";
 
 export default function homepage({ navigation }) {
     return (
+      <ImageBackground source={require('../assets/background.png')}  resizeMode="cover" style={styles.image}>
+
         <View style={styles.container}>
           
           <Image source={require('../assets/logo.png')} style={styles.imeg} />
@@ -27,12 +28,13 @@ export default function homepage({ navigation }) {
           </TouchableOpacity>
         
       </View>
+
+      </ImageBackground>
     );
   }
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor:'#223654',
     },
     
     Button:{
@@ -50,7 +52,6 @@ text:{
   fontSize:20,
   marginTop:60,
   marginLeft:50,
-  position:"center",
   fontSize: 25,
   color:"white",
  textAlign: 'center'
@@ -93,6 +94,12 @@ buttonResgister:{
   margin:40,
   marginHorizontal:"25%",
 },
+
+image: {
+  flex: 1,
+  justifyContent: "center"
+},
+
 
 
   });

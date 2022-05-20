@@ -1,10 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import { Text , View, Button,TextInput,StyleSheet,FlatList,Image,TouchableOpacity} from 'react-native';
-import FilmItem from '../FilmItem';
-import WatchPage from './WatchPage';
-
-
-
 
 const InfoMovie=({ navigation, route })=>{
       const { item } = route.params;
@@ -44,18 +39,14 @@ const InfoMovie=({ navigation, route })=>{
 const styles=StyleSheet.create({
     container: {
         flex: 1,
-        padding: 8,
         backgroundColor:"#223654",
     
       },
       cover: {
         width:'100%',
         height: "35%",
-        borderRadius:5,
-        marginTop:5,
         borderColor:"#53E8C6",
-        borderWidth:5,
-
+        opacity:"75%",
       },
       txt:{
         color:"#53E8C6",

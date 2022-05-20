@@ -1,4 +1,4 @@
-import { auth } from "../Config";
+import { auth ,db} from "../Config";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
   signInWithCredential,
   FacebookAuthProvider,
 } from "firebase/auth";
+import {addDoc , collection} from 'firebase/firestore'
 // Listen for authentication state to change.
 onAuthStateChanged(auth, (user) => {
   if (user != null) {
@@ -18,21 +19,8 @@ onAuthStateChanged(auth, (user) => {
 });
 
 async function register(email, password) {
-  await createUserWithEmailAndPassword(auth, email, password).then((re)=>{
-    console.log(re.user.email)
-    addDoc(collection(db,"users"),{
-        id:auth.currentUser.uid,
-        email:email,
-        password:password,
-        role:role
-    }).then(() =>{
-        console.log("data added");
-    }).catch((err) => {
-        console.log(err);
-    })
-})
+  await createUserWithEmailAndPassword(auth, email, password)
 
-.catch(error => alert(error.message));
 }
 
 async function login(email, password) {
