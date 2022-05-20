@@ -15,8 +15,7 @@ const ActionMovie=({ navigation, route })=>{
     const movieCol = collection(db, 'action_movie');
     const movie_Snapshot = await getDocs(movieCol);
     const movie_List = movie_Snapshot.docs.map(doc => doc.data());
-    const cartmovie=movie_List.slice(0,2)
-    setmovies(cartmovie);
+    setmovies(movie_List);
   }, []);
 
   
