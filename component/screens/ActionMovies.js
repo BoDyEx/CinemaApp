@@ -3,12 +3,13 @@ import {   View, StyleSheet,FlatList,TouchableOpacity , SafeAreaView,ImageBackgr
 import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../../db/Config';
 import FilmItem from '../FilmItem';
+import { TextInput } from 'react-native-web';
+import { Button } from 'react-native-elements';
 
 
 
 
 const ActionMovie=({ navigation, route })=>{
-  const[movies,setmovies]=useState([]);
 
   useEffect(async() => {
     //Runs only on the first render
@@ -18,13 +19,42 @@ const ActionMovie=({ navigation, route })=>{
     setmovies(movie_List);
   }, []);
 
-  
+  const[movies,setmovies]=useState([]);
+  const[searchItem,setsearchItem]=useState();
+  const[data]=useState([]);
+  console.log(movies) ;
+
+  const search = (searchItem) => {    
+    let mmm = movies ;
+    if(searchItem.length == 0){
+      setmovies(mmm); 
+      console.log("zero item");
+    }else {
+      let s = "";
+      s = searchItem;
+      let h = 0;
       
+      for (let i = 0; i < movies.length; i++) {
+        if( movies[i].name_film.match(s)){
+          data[h] = movies[i]; 
+          h++
+        }
+          
+      }
+      setmovies(data);
+    }
+      
+  };
 
   return(
     <ImageBackground source={require("../backgroundApp.jpg")} resizeMode="cover" style={styles.image}>
 
 
+          <TextInput
+              placeholder="Search"
+              onChangeText={setsearchItem}          
+          />
+          <Button title="search" onPress={()=>search(searchItem)} />
           <FlatList 
             data={movies}
             renderItem={({item})=>(
