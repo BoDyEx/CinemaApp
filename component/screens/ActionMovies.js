@@ -17,14 +17,19 @@ const ActionMovie=({ navigation, route })=>{
     const movie_Snapshot = await getDocs(movieCol);
     const movie_List = movie_Snapshot.docs.map(doc => doc.data());
     setmovies(movie_List);
+    setmoviestemp(movie_List);
+
   }, []);
 
   const[movies,setmovies]=useState([]);
-  const[searchItem,setsearchItem]=useState();
+  const[searchItem,setsearchItem]=useState("");
+  
+  const[moviestemp,setmoviestemp]=useState([]);
 
   const search = (searchItem) => {    
     if(searchItem.length == 0){
-      setmovies(movies); 
+      
+      setmovies(moviestemp); 
     }else {
       let s = "";
       s = searchItem;

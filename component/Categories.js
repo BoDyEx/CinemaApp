@@ -30,19 +30,19 @@ export default function Categories({ navigation }) {
     const comdymovieCol = collection(db, 'comdy_movie');
     const comdymovie_Snapshot = await getDocs(comdymovieCol);
     const comdymovie_List = comdymovie_Snapshot.docs.map(doc => doc.data());
-    const comdycartmovie=comdymovie_List.slice(0,2)
+    const comdycartmovie=comdymovie_List.slice(0,3)
     setcomdymovies(comdycartmovie);
 
     const cartoonmovieCol = collection(db, 'cartoon_movie');
     const cartoonmovie_Snapshot = await getDocs(cartoonmovieCol);
     const cartoonmovie_List = cartoonmovie_Snapshot.docs.map(doc => doc.data());
-    const cartooncartmovie=cartoonmovie_List.slice(0,2)
+    const cartooncartmovie=cartoonmovie_List.slice(0,3)
     setcartoonmovies(cartooncartmovie);
 
     const romanticmovieCol = collection(db, 'romantic_movie');
     const romanticmovie_Snapshot = await getDocs(romanticmovieCol);
     const romanticmovie_List = romanticmovie_Snapshot.docs.map(doc => doc.data());
-    const romanticcartmovie=romanticmovie_List.slice(0,2)
+    const romanticcartmovie=romanticmovie_List.slice(0,3)
     setromanticmovies(romanticcartmovie);
   }, []);
 

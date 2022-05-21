@@ -31,12 +31,18 @@ export default function App() {
         initialRouteName="homepage"
         >
 
-      <Stack.Screen  name="Cinema" component={homepage}  options={{title:"مشاهدة الافلام",  headerShown: false}}/>
+      <Stack.Screen  name="Cinema" component={homepage}  options={{title:"مشاهدة الافلام",  headerShown: true}}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{title:"الدخول"}}/>
       <Stack.Screen name="Register" component={Register}  options={{title:"التسجيل"}}/>
 
 
-      <Stack.Screen name="Home" component={fhome} options={{title:"الفئات" ,  headerShown: false}}/>
+      <Stack.Screen name="Home" component={fhome} options={{title:"الفئات" ,  headerShown: true, headerLeft: () => (
+            <Button
+              onPress={() => alert('This is a button!')}
+              title="SignOut"
+              color="#fff"
+            />
+          ),}}/>
       <Stack.Screen  name="ActionMovie" component={ActionMovie} options={{title:"افلام اكشن"}} />
       <Stack.Screen  name="AddMovie" component={AddMovie} options={{title:"افلام اكشن"}} />
 
