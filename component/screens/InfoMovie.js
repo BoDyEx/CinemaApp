@@ -103,7 +103,7 @@ const styles=StyleSheet.create({
         width:'100%',
         height: "35%",
         borderColor:"#53E8C6",
-        opacity:"75%",
+        opacity:75,
       },
       txt:{
         color:"#53E8C6",
