@@ -1,7 +1,7 @@
 import  React from 'react';
 import { useState } from 'react';
 import { Text, View, StyleSheet,TextInput,TouchableOpacity ,Picker,ScrollView,Alert} from 'react-native';
-import { collection, getDocs ,doc, setDoc} from 'firebase/firestore/lite';
+import { collection, getDocs ,doc, setDoc,deleteDoc} from 'firebase/firestore';
 import { db } from '../../db/Config';
 
 
@@ -11,6 +11,8 @@ const AddMovie=({ navigation, route })=> {
   const[film_link,setfilm_link]=useState("");
   const[actors,setactors]=useState("");
   const[cover_link,setcover_link]=useState("");
+  const[temp,settemp]=useState([]);
+  const key=Math.random().toString();
 
   
   const [selectedValue, setSelectedValue] = useState("action_movie");
@@ -21,11 +23,11 @@ const AddMovie=({ navigation, route })=> {
           }
 
           else{
-          await setDoc(doc(db, selectedValue , Math.random().toString()), {
+          await setDoc(doc(db, selectedValue , key), {
               name_film: name_film,
               image_link:image_link,
               film_link:film_link,
-              key:Math.random(),
+              key:key,
               actors:actors,
               cover_link:cover_link,
               
@@ -37,8 +39,15 @@ const AddMovie=({ navigation, route })=> {
           alert("movie added")
 
         };
+        
 
   }
+
+
+
+
+
+  
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.txt}>ادخل اسم الفليم</Text>

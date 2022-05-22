@@ -1,12 +1,50 @@
 import { StyleSheet, Text, View, TextInput,TouchableOpacity } from "react-native";
 import { login } from "../../db/auth/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddMovie from "./AddMovies";
-export default function Login  ({navigation}){
+
+import { auth ,db} from "../../db/Config";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  confirmPasswordReset,
+  signInWithCredential,
+  FacebookAuthProvider,
+} from "firebase/auth";
+import { collection, query, where, getDocs ,addDoc} from "firebase/firestore";
+
+
+export default function Login  ({navigation, route}){
   
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [error, setError] = useState("");
+  let myuser=[];
+
+
+ 
+
+  const login=async(email, password)=> {
+    await signInWithEmailAndPassword(auth, email, password)
+    .then(async () => {
+              const q = query(collection(db, "users"), where("id", "==", auth.currentUser.uid));
+  
+              const querySnapshot = await getDocs(q);
+              
+               myuser= querySnapshot.docs.map(doc => doc.data());
+
+
+            
+              console.log("signed in");
+          }).catch((err) =>{
+              console.log(err);
+          })
+
+          console.log(myuser[0].id);
+  }
+
   const openRegisterScreen = () => {
     navigation.navigate('Register');
   }; 
@@ -41,7 +79,7 @@ export default function Login  ({navigation}){
             console.log(email, password);
             login(email,password)   
               .then(
-              ()=> { navigation.navigate('Home')} 
+              ()=> { navigation.navigate('Home',{myuser})} 
               )
               .catch((e) => setError(e.message));
           } 

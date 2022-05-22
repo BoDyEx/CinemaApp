@@ -13,9 +13,11 @@ import ComdyMovie from "./component/screens/ComdyMovies";
 import CartoonMovie from "./component/screens/CartoonMovie";
 import RomanticMovie from "./component/screens/RomanticMovie";
 import AddMovie from "./component/screens/AddMovies";
+import { Button } from "react-native";
+import Profile from "./component/screens/Profile";
 
 
-export default function App() {
+export default function App({ navigation, route }) {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -28,7 +30,7 @@ export default function App() {
         headerTintColor:"#223654",
         
       }}  
-        initialRouteName="homepage"
+        initialRouteName="Cinema"
         >
 
       <Stack.Screen  name="Cinema" component={homepage}  options={{title:"مشاهدة الافلام",  headerShown: false}}/>
@@ -37,7 +39,9 @@ export default function App() {
 
 
       <Stack.Screen name="Home" component={fhome} options={{title:"الفئات" ,  headerShown: false}}/>
-      <Stack.Screen  name="ActionMovie" component={ActionMovie} options={{title:"افلام اكشن"}} />
+      <Stack.Screen  name="ActionMovie" component={ActionMovie} 
+      
+      options={{title:"افلام اكشن" }} />
       <Stack.Screen  name="AddMovie" component={AddMovie} options={{title:"افلام اكشن"}} />
 
       <Stack.Screen  name="ComdyMovie" component={ComdyMovie} options={{title:"افلام كوميدى"}} />
@@ -45,6 +49,9 @@ export default function App() {
       <Stack.Screen  name="RomanticMovie" component={RomanticMovie} options={{title:"افلام رومانسى"}} />
       <Stack.Screen  name="InfoMovie" component={InfoMovie} options={{title:"معلومات الفليم"}} />
       <Stack.Screen  name="WatchPage" component={WatchPage}  options={{title:"شاهد الفليم"}}/>
+      <Stack.Screen  name="Profile" component={Profile}  options={{title:"صفحتك"}}/>
+
+
 
 
 

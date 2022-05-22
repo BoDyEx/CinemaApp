@@ -10,6 +10,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-firebase/firestore": "^14.9.4",
+    "@react-navigation/core": "^6.2.1",
+    "@react-navigation/drawer": "^6.4.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "expo": "~44.0.0",
@@ -21,6 +24,8 @@
     "react-native": "0.64.3",
     "react-native-cards": "^1.1.4",
     "react-native-elements": "^3.4.2",
+    "react-native-gesture-handler": "~2.1.0",
+    "react-native-reanimated": "~2.3.1",
     "react-native-web": "0.17.1",
     "react-native-web-webview": "^1.0.2",
     "react-native-webview": "^11.18.2",

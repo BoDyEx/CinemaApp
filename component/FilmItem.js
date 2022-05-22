@@ -12,6 +12,7 @@ const FilmItem=(props)=>{
           source={{uri:props.link}}
         /> 
         <Text style={styles.txt}>{props.name}</Text>
+        
     </View>
   );
 }

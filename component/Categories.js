@@ -1,18 +1,20 @@
-import {Image,StyleSheet,Text,View,Button,TouchableOpacity, ScrollView,FlatList,ImageBackground} from "react-native";
-import { auth } from "../db/Config";
-import {  signOut } from "firebase/auth";
-import { db } from "../db/Config";
-import { collection, getDocs } from 'firebase/firestore/lite';
 import React,{useState,useEffect} from 'react';
+
+import {Image,StyleSheet,Text,View,Button,TouchableOpacity, ScrollView,FlatList,ImageBackground,TextInput} from "react-native";
+
+import { db } from "../db/Config";
+import { collection, getDocs } from 'firebase/firestore';
 import FilmItemCard from "./FilmItemCard";
 
-export default function Categories({ navigation }) {
+export default function Categories({ navigation, route }) {
   const[actionmovies,setactionmovies]=useState([]);
   const[comdymovies,setcomdymovies]=useState([]);
   const[cartoonmovies,setcartoonmovies]=useState([]);
   const[romanticmovies,setromanticmovies]=useState([]);
-  const[search , setsearch]=useState();
-  const[sactionmovies,setsactionmovies]=useState([]);
+
+  const {myuser}=route.params;
+  
+
 
   
 
@@ -21,6 +23,8 @@ export default function Categories({ navigation }) {
 
   useEffect(async() => {
     //Runs only on the first render
+    console.log(myuser[0].id);
+
     const actionmovieCol = collection(db, 'action_movie');
     const actionmovie_Snapshot = await getDocs(actionmovieCol);
     const actionmovie_List = actionmovie_Snapshot.docs.map(doc => doc.data());
@@ -51,6 +55,20 @@ export default function Categories({ navigation }) {
  
     return (
       <ImageBackground source={require('../assets/background.png')}  resizeMode="cover" style={styles.image}>
+        {
+        myuser[0].role==="Admin"?<View style={styles.admin}>
+        <TouchableOpacity 
+          style={styles.adminbtn}
+          onPress={() => navigation.navigate('AddMovie')}
+      
+              >
+            <Text style={styles.admintxtbtn}>اضافة فليم</Text>
+        </TouchableOpacity>
+  
+        </View>
+        :<View></View>
+      }
+      
           <ScrollView>
           <View style={styles.container}>
 
@@ -59,7 +77,7 @@ export default function Categories({ navigation }) {
               <TouchableOpacity 
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("ActionMovie");
+                      navigation.navigate("ActionMovie",{myuser});
                     }}
                     >
                     <Text style={styles.txtbtn} >ألمزيد</Text>
@@ -75,7 +93,7 @@ export default function Categories({ navigation }) {
                 data={actionmovies}
                 renderItem={({item})=>(
                   <TouchableOpacity         
-                    onPress={() => navigation.navigate('InfoMovie',{item})}
+                    onPress={() => navigation.navigate('InfoMovie',{item,myuser})}
                   >
                     <FilmItemCard  link={item.image_link} />
                   </TouchableOpacity>             
@@ -88,7 +106,7 @@ export default function Categories({ navigation }) {
               <TouchableOpacity 
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("ComdyMovie");
+                      navigation.navigate("ComdyMovie",{myuser});
                     }}
                     >
                     <Text style={styles.txtbtn} >ألمزيد</Text>
@@ -103,7 +121,7 @@ export default function Categories({ navigation }) {
                 data={comdymovies}
                 renderItem={({item})=>(
                   <TouchableOpacity         
-                    onPress={() => navigation.navigate('InfoMovie',{item})}
+                    onPress={() => navigation.navigate('InfoMovie',{item,myuser})}
                   >
                     <FilmItemCard  link={item.image_link} />
                   </TouchableOpacity>             
@@ -118,7 +136,7 @@ export default function Categories({ navigation }) {
               <TouchableOpacity 
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("CartoonMovie");
+                      navigation.navigate("CartoonMovie",{myuser});
                     }}
                     >
                     <Text style={styles.txtbtn} >ألمزيد</Text>
@@ -133,7 +151,7 @@ export default function Categories({ navigation }) {
                 data={cartoonmovies}
                 renderItem={({item})=>(
                   <TouchableOpacity         
-                    onPress={() => navigation.navigate('InfoMovie',{item})}
+                    onPress={() => navigation.navigate('InfoMovie',{item,myuser})}
                   >
                     <FilmItemCard  link={item.image_link} />
                   </TouchableOpacity>             
@@ -148,7 +166,7 @@ export default function Categories({ navigation }) {
               <TouchableOpacity 
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("RomanticMovie");
+                      navigation.navigate("RomanticMovie",{myuser});
                     }}
                     >
                     <Text style={styles.txtbtn} >ألمزيد</Text>
@@ -164,7 +182,7 @@ export default function Categories({ navigation }) {
                 data={romanticmovies}
                 renderItem={({item})=>(
                   <TouchableOpacity         
-                    onPress={() => navigation.navigate('InfoMovie',{item})}
+                    onPress={() => navigation.navigate('InfoMovie',{item,myuser})}
                   >
                     <FilmItemCard  link={item.image_link} />
                   </TouchableOpacity>             
@@ -257,6 +275,38 @@ export default function Categories({ navigation }) {
       },
       txtend:{
 
+      },
+
+      admintxt:{
+        color:"white",
+        fontSize:10,
+        textAlign:"center",
+        borderWidth:2,
+        padding:3,
+        borderColor:"white",
+        borderRadius:5,
+        marginStart:"1%",
+        width:"75%",
+
+
+
+        
+      },
+      adminbtn:{
+        backgroundColor:"#53E8C6",
+        width:"25%",
+        padding:10,
+        borderRadius:20,
+        alignSelf:'center',
+        margin:10,
+
+
+      },
+
+      admintxtbtn:{
+        color:"white",
+        fontSize:15,
+        alignSelf: "center",
       },
       
   });
