@@ -18,7 +18,7 @@ const InfoMovie=({ navigation, route })=>{
 
       const deletMovie=async()=>{    
         try {
-          await deleteDoc(doc(db, "action_movie", item.key)).then(
+          await deleteDoc(doc(db, "action_movie",item.key)).then(
             ()=> { navigation.navigate('Home',{myuser})} 
             );
           console.log("Document deleted with ID: ");
@@ -51,21 +51,6 @@ const InfoMovie=({ navigation, route })=>{
 
       <Text style={styles.txtName}>{item.name_film}</Text>
 
-        {/*admin */}
-      {
-        myuser[0].role==="Admin"?<View style={styles.admin}>
-        <TouchableOpacity 
-          style={styles.adminbtn}
-          onPress={() => navigation.navigate('WatchPage',{item})}
-      
-              >
-            <Text style={styles.admintxtbtn}>عدل</Text>
-        </TouchableOpacity>
-        <TextInput   onChangeText={setename_film}  value={ename_film} style={styles.admintxt}/>
-  
-        </View>
-        :<View></View>
-      }
       
     
 
@@ -73,32 +58,23 @@ const InfoMovie=({ navigation, route })=>{
       <Text style={styles.txt}>اسماء الممثلين</Text>
       <Text style={styles.txt2}>{item.actors} </Text>
 
-        {/*admin */}
-        {
-        myuser[0].role==="Admin"?
-        <View style={styles.admin}>
+       
+      
+      {
+        myuser[0].role==="Admin"?<View style={styles.admin}>
+        
         <TouchableOpacity 
-          style={styles.adminbtn}
-          onPress={() => navigation.navigate('WatchPage',{item})}
-      
-              >
-            <Text style={styles.admintxtbtn}>عدل</Text>
-        </TouchableOpacity>
-        <TextInput   onChangeText={setename_film}  value={ename_film} style={styles.admintxt}/>
-  
-        </View>
-        :<View></View>
-      }
-      
-     
-
-      <TouchableOpacity 
         style={styles.adminbtn}
         onPress={deletMovie}
     
             >
           <Text style={styles.admintxtbtn}>حذف</Text>
       </TouchableOpacity>
+        </View>
+        :<View></View>
+      }
+
+      
 
       <TouchableOpacity 
         style={styles.button}

@@ -1,11 +1,6 @@
 import React,{useState,useEffect} from 'react';
-<<<<<<< HEAD
-import {   View, StyleSheet,FlatList,TouchableOpacity,Text} from 'react-native';
+import {   View, StyleSheet,FlatList,TouchableOpacity,Text,TextInput} from 'react-native';
 import { collection, getDocs} from 'firebase/firestore';
-=======
-import {   View, StyleSheet,FlatList,TouchableOpacity,TextInput,Text} from 'react-native';
-import { collection, getDocs} from 'firebase/firestore/lite';
->>>>>>> b637e176a754bb334b7e05729913fcbfd4efb36b
 import FilmItem from '../FilmItem';
 import { db } from '../../db/Config';
 
@@ -14,6 +9,8 @@ import { db } from '../../db/Config';
 
 const RomanticMovie=({ navigation, route })=>{
   const[movies,setmovies]=useState([]);
+  const[tempmovies,settempmovies]=useState([]);
+
   const {myuser}=route.params;
 
 
@@ -22,14 +19,15 @@ const RomanticMovie=({ navigation, route })=>{
     const movieCol = collection(db, 'romantic_movie');
     const movie_Snapshot = await getDocs(movieCol);
     const movie_List = movie_Snapshot.docs.map(doc => doc.data());
+    settempmovies(movie_List);
     setmovies(movie_List);
   }, []);
 
-const[searchItem,setsearchItem]=useState();
+const[searchItem,setsearchItem]=useState("");
 
   const search = (searchItem) => {    
     if(searchItem.length == 0){
-      setmovies(movies); 
+      setmovies(tempmovies); 
     }else {
       let s = "";
       s = searchItem;
@@ -53,7 +51,6 @@ const[searchItem,setsearchItem]=useState();
   return(
     
     <View style={styles.mainContanier}>
-<<<<<<< HEAD
 <TouchableOpacity 
           style={styles.adminbtn}
           onPress={() => navigation.navigate('Profile',{myuser})}
@@ -61,7 +58,6 @@ const[searchItem,setsearchItem]=useState();
               >
             <Text style={styles.admintxtbtn}>صفحتك</Text>
         </TouchableOpacity>
-=======
         <TextInput
               placeholder="Search"
               onChangeText={setsearchItem} 
@@ -72,7 +68,6 @@ const[searchItem,setsearchItem]=useState();
           <Text style={styles.txtbtn}>search</Text>
 
           </TouchableOpacity>
->>>>>>> b637e176a754bb334b7e05729913fcbfd4efb36b
         <FlatList 
           data={movies}
           renderItem={({item})=>(
@@ -115,7 +110,6 @@ const styles=StyleSheet.create({
       textAlign: 'left',
       color:"white"
     },
-<<<<<<< HEAD
     adminbtn:{
       backgroundColor:"#53E8C6",
       width:"25%",
@@ -131,7 +125,6 @@ const styles=StyleSheet.create({
       fontSize:10,
       alignSelf: "center",
     },
-=======
     button:{
   width:"20%",
   padding:10,
@@ -148,7 +141,6 @@ const styles=StyleSheet.create({
       alignSelf: "center",
       fontWeight:"bold", 
     }
->>>>>>> b637e176a754bb334b7e05729913fcbfd4efb36b
 
 
 

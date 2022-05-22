@@ -28,25 +28,25 @@ export default function Categories({ navigation, route }) {
     const actionmovieCol = collection(db, 'action_movie');
     const actionmovie_Snapshot = await getDocs(actionmovieCol);
     const actionmovie_List = actionmovie_Snapshot.docs.map(doc => doc.data());
-    const actioncartmovie=actionmovie_List.slice(0,3)
+    const actioncartmovie=actionmovie_List.slice(0,4)
     setactionmovies(actioncartmovie);
 
     const comdymovieCol = collection(db, 'comdy_movie');
     const comdymovie_Snapshot = await getDocs(comdymovieCol);
     const comdymovie_List = comdymovie_Snapshot.docs.map(doc => doc.data());
-    const comdycartmovie=comdymovie_List.slice(0,3)
+    const comdycartmovie=comdymovie_List.slice(0,4)
     setcomdymovies(comdycartmovie);
 
     const cartoonmovieCol = collection(db, 'cartoon_movie');
     const cartoonmovie_Snapshot = await getDocs(cartoonmovieCol);
     const cartoonmovie_List = cartoonmovie_Snapshot.docs.map(doc => doc.data());
-    const cartooncartmovie=cartoonmovie_List.slice(0,3)
+    const cartooncartmovie=cartoonmovie_List.slice(0,4)
     setcartoonmovies(cartooncartmovie);
 
     const romanticmovieCol = collection(db, 'romantic_movie');
     const romanticmovie_Snapshot = await getDocs(romanticmovieCol);
     const romanticmovie_List = romanticmovie_Snapshot.docs.map(doc => doc.data());
-    const romanticcartmovie=romanticmovie_List.slice(0,3)
+    const romanticcartmovie=romanticmovie_List.slice(0,4)
     setromanticmovies(romanticcartmovie);
   }, []);
 
@@ -195,11 +195,7 @@ export default function Categories({ navigation, route }) {
             
                 
           </View>
-          <View>
-            <TouchableOpacity style={styles.btn}>
-              <Text style={styles.txtend}>كوميدى اكشن </Text>
-            </TouchableOpacity>
-          </View>
+          
 
           </ScrollView>
        </ImageBackground>

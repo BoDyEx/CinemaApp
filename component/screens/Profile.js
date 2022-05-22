@@ -21,8 +21,8 @@ const Profile=({ navigation, route })=>{
   return(
     
     <View style={styles.mainContanier}>
-        <Text >{myuser[0].email}</Text>
-        <Text >{myuser[0].role}</Text>
+        <Text style={styles.admintxtbtn}>{myuser[0].email}</Text>
+        <Text style={styles.admintxtbtn}>{myuser[0].role}</Text>
         <TouchableOpacity 
           style={styles.adminbtn}
           onPress={() => 
@@ -60,14 +60,14 @@ const styles=StyleSheet.create({
       width:"25%",
       padding:10,
       borderRadius:20,
-      alignSelf:'flex-start'
+      alignSelf:'center'
 
 
     },
 
     admintxtbtn:{
       color:"white",
-      fontSize:10,
+      fontSize:25,
       alignSelf: "center",
     },
   
